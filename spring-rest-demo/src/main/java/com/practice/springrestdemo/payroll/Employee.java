@@ -7,7 +7,7 @@ import jakarta.persistence.Id;
 import java.util.Objects;
 
 @Entity
-class Employee {
+public class Employee {
 
   private @Id
   @GeneratedValue
