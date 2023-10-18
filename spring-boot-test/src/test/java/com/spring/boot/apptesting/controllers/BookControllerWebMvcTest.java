@@ -38,6 +38,21 @@ public class BookControllerWebMvcTest {
                 .andExpect(jsonPath("$.length()").value(3));
     }
 
+    @Test
+    void findOneShouldReturnValidBook() throws Exception {
+        Mockito.when(this.bookService.findOne(1)).thenReturn(getBooks().get(0));
+
+        mvc.perform(get("/books/1"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.id").value(1))
+                .andExpect(jsonPath("$.title").value("97 Things Every Java Programmer Should Know"))
+                .andExpect(jsonPath("$.author").value("Kevlin Henney, Trisha Gee"))
+                .andExpect(jsonPath("$.publisher").value("OReilly Media, Inc."))
+                .andExpect(jsonPath("$.releaseDate").value("May 2020"))
+                .andExpect(jsonPath("$.isbn").value("9781491952696"))
+                .andExpect(jsonPath("$.topic").value("Java"));
+    }
+
     private List<Book> getBooks() {
         Book one = new Book(1,
                 "97 Things Every Java Programmer Should Know",
