@@ -53,5 +53,10 @@ public class BookService {
         books.addAll(Arrays.asList(one,two,three));
     }
 
+    public Book create(Book book) {
+        books.add(book);
+        return book;
+    }
+
 }
 
