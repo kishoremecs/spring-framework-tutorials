@@ -1,5 +1,7 @@
 package com.practice.config;
 
+import com.practice.sequence.DatePrefixGenerator;
+import com.practice.sequence.PrefixGenerator;
 import com.practice.sequence.Sequence;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -25,5 +27,16 @@ public class SequenceConfiguration {
 
     seqgen.setInitial(100000);
     return seqgen;
+  }
+
+  @Bean
+  public DatePrefixGenerator datePrefixGenerator() {
+    return new DatePrefixGenerator("yyyyMMdd");
+  }
+  @Bean
+  public Sequence sequenceGenerator(PrefixGenerator prefixGenerator) {
+    var generator = new Sequence("A", 100000);
+    generator.setPrefixGenerator(prefixGenerator);
+    return generator;
   }
 }
