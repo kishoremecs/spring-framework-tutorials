@@ -29,6 +29,14 @@ public class SequenceConfiguration {
   }
 
   @Bean
+  public Sequence sequence(PrefixGenerator prefixGenerator) {
+    var seqgen = new Sequence(prefixGenerator,  "A",30);
+
+    seqgen.setInitial(100000);
+    return seqgen;
+  }
+
+  @Bean
   public DatePrefixGenerator datePrefixGenerator() {
     return new DatePrefixGenerator("yyyyMMdd");
   }

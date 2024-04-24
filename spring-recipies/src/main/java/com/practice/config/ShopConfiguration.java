@@ -2,9 +2,11 @@ package com.practice.config;
 
 import com.practice.shop.*;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
+@ComponentScan("com.practice.shop")
 public class ShopConfiguration {
 
   @Bean
@@ -15,5 +17,10 @@ public class ShopConfiguration {
   @Bean
   public Product cdrw() {
     return new Disc("CD-RW", 1.5, 700);
+  }
+
+  @Bean
+  public Product dvdrw() {
+    return new Disc("DVD-RW", 3.0, 4900);
   }
 }

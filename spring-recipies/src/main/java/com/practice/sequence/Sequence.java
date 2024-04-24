@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.UUID;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @Component
@@ -26,6 +27,14 @@ public class Sequence {
     this.prefix = prefix;
     this.suffix = suffix;
   }
+  public Sequence(PrefixGenerator prefixGenerator, String suffix, int initial) {
+    this.id = UUID.randomUUID().toString();
+    this.prefixGenerator = prefixGenerator;
+    this.prefix = this.getPrefixGenerator().generatePrefix();
+    this.suffix = suffix;
+    this.counter.set(initial);
+  }
+
   public String getId() {
     return id;
   }
