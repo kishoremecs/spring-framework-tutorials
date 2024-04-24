@@ -2,6 +2,7 @@ package com.practice.shop;
 import com.practice.config.ShopConfiguration;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 public class ScopeMain {
+
   public static void main(String[] args) {
     var cfg = ShopConfiguration.class;
     try (var context = new AnnotationConfigApplicationContext(cfg)) {
@@ -16,5 +17,7 @@ public class ScopeMain {
       cart2.addItem(dvdrw);
       System.out.println("Shopping cart 2 contains " + cart2.getItems());
     }
+
   }
+
 }
