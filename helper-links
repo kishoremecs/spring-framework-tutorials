@@ -1,0 +1,3 @@
+Sample Command to create a maven project
+
+mvn archetype:generate -DgroupId=com.practice -DartifactId=spring-ioc-practice -Dpackagename=com.spring.practice -DarchetypeArtifactId=maven-archetype-quickstart 
