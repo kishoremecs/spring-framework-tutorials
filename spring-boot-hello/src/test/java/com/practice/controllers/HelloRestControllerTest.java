@@ -29,8 +29,10 @@ public class HelloRestControllerTest {
     @Test
     public void greetWithName(@Autowired TestRestTemplate webTestClient) {
         var greeting = webTestClient.getForEntity("/greet?name={name}", Greeting.class, "Kishore");
-        assertEquals("Hello, Kishore!", Objects.requireNonNull(greeting.getBody()).message());
-        assertTrue(greeting.getStatusCode().is2xxSuccessful());
-        assertEquals(MediaType.APPLICATION_JSON,greeting.getHeaders().getContentType());
+       assertAll(
+               () -> assertEquals("Hello, Kishore!", Objects.requireNonNull(greeting.getBody()).message()),
+               () -> assertTrue(greeting.getStatusCode().is2xxSuccessful()),
+               () -> assertEquals(MediaType.APPLICATION_JSON,greeting.getHeaders().getContentType())
+       );
     }
 }
